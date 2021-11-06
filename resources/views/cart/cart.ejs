@@ -1,0 +1,63 @@
+<div class="fullCartContainer">
+  <div class="halfCartContainer">
+    <h1>Kenil joshi</h1>
+    <h3>keniljoshi3@gmail.com</h3>
+    <h1>Add Address and Phone-Number</h1>
+    <form class="orderForm" action="/addOrderDetails" method="post">
+      Phone-Number: <input type="text" name="phoneNumber" /> Address:<textarea
+        rows="4"
+        cols="50"
+        name="address"
+      ></textarea>
+      <% if(!user) {%> 
+      <div class="orderItButton">
+        <button>Login</button>
+      </div>
+      <% }else {%>
+      <div class="orderItButton">
+        <button>Order it Now</button>
+      </div>
+      <% } %>  
+    </form>
+  </div>
+  <div class="otherHalfCartContainer">
+    <div class="fullfirstCartContainer">
+      <h1 class='yourOrders'>Your Orders</h1>
+      <div class="firstCartContainer">
+        <% foodOrdered.forEach(function(orderDetails){%> 
+        <div class="orderCartCard">
+          <div class="orderNameAndHotel">
+            <h1><%= orderDetails._doc.name %> </h1>
+            <h2><%= orderDetails._doc.owner.name %></h2>
+          </div>
+          <h3><%= orderDetails._doc.price%></h3>
+          <div class="subtractAndAddOrder">
+            <button class="cancelOneOrder">
+              <i class="fas fa-minus"></i>
+            </button>
+            <h3><%= orderDetails.qty %> </h3>
+            <button class="addOneOrder">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <% }) %> 
+      </div>
+    </div>
+    <div class="secondCartContainer">
+      <h1>Total Price</h1>
+      <div class="subTotalPrize">
+        <h3>SubTotal</h3>
+        <h3>₹<%= session.cart.totalPrice %> </h3>
+      </div>
+      <div class="deliveryPrice">
+        <h3>Delivery Cost</h3>
+        <h3>₹<%= session.cart.deliveryPrice %> </h3>
+      </div>
+      <div class="totalPrice">
+        <h3>Total</h3>
+        <h3>₹ <%=  session.cart.totalPrice + session.cart.deliveryPrice%> </h3>
+      </div>
+    </div>
+  </div>
+</div>

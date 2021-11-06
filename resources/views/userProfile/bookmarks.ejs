@@ -1,0 +1,52 @@
+<div class="fullProfileContainer">
+  <div class="navigationProfileContainer">
+    <h1>Activity</h1>
+    <a href="/<%= user.email %>/orders"><h3>My Orders</h3></a>
+    <a href="/<%= user.email %>/bookMarks"><h3 class="active">BookMarks</h3></a>
+    <a href="/<%= user.email %>/likedFood"><h3>Liked Foods</h3></a>
+  </div>
+  <div class="showingContent">
+    <h1>BookMark List</h1>
+    <% if(bookMarkedHotel.length!=0) {%> 
+    <div class="fullBookMarkContainer">
+      <% bookMarkedHotel.forEach(function(bookMarkHotel){%>
+        <div class="bookMarkCard">
+          <div class="deleteBookmark" data-hotel='<%= JSON.stringify(bookMarkHotel) %> '>
+            <i class="fas fa-times"></i>
+          </div>
+          <a href="/<%= bookMarkHotel.hotelName %> ">
+          <div class="hotelBookMarkImage">
+            <img src="/img/bananaSandwitch.jpg" alt="hotel" />
+          </div>
+          <h1><%= bookMarkHotel.hotelName %></h1>
+        </a>
+        </div>
+      <% }) %>
+    </div>
+    <% }else{ %>
+      <div class="noBookMark1">
+        <img src="/img/bookmark.png" alt="bookmark">
+      </div>
+      <div class="noBookMark2">
+        <h1>There are no bookMark</h1>
+      </div>
+    <% } %>  
+  </div>
+  <div class="showingProfileContainer">
+    <div class="profilePicture">
+      <i class="fas fa-user fa-6x"></i>
+    </div>
+    <h1>Kenil</h1>
+    <h3>keniljoshi3@gmail.com</h3>
+    <div class="buttonForLogout">
+      <button class="logOutButton">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </button>
+      <button class="deleteButton">
+        <i class="fas fa-trash-alt"></i>
+        Delete Account
+      </button>
+    </div>
+  </div>
+</div>

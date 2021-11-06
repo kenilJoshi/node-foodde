@@ -1,0 +1,45 @@
+<div class="fullProfileContainer">
+  <div class="navigationProfileContainer">
+    <h1>Activity</h1>
+    <a href="/<%= user.email %>/orders"><h3>My Orders</h3></a>
+    <a href="/<%= user.email %>/bookMarks"><h3>BookMarks</h3></a>
+    <a href="/<%= user.email %>/likedFood"
+      ><h3 class="active">Liked Foods</h3></a
+    >
+  </div>
+  <div class="showingContent">
+    <h1>Liked Food</h1>
+    <div class="likedFoodList">
+      <% likedFood.forEach(function(food){%>
+      <div class="likedFoodcardContent">
+        <div class="img1"></div>
+        <div class="writing">
+          <h2><%= food.name %></h2>
+          <h3><%= food.price %></h3>
+        </div>
+        <button class="btn5">
+          <i class="fas fa-shopping-cart"></i>
+          Add to Cart
+        </button>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+  <div class="showingProfileContainer">
+    <div class="profilePicture">
+      <i class="fas fa-user fa-6x"></i>
+    </div>
+    <h1>Kenil</h1>
+    <h3>keniljoshi3@gmail.com</h3>
+    <div class="buttonForLogout">
+      <button class="logOutButton">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </button>
+      <button class="deleteButton">
+        <i class="fas fa-trash-alt"></i>
+        Delete Account
+      </button>
+    </div>
+  </div>
+</div>

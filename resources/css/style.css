@@ -1,0 +1,1229 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@545&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 2px;
+}
+.container {
+  overflow: hidden;
+}
+nav {
+  background-color: #f4f9f9;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 41px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+.navbar {
+  background-color: #f4f9f9;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 41px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.fullProfileNavigator {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 74em;
+  transform: translateY(-114%);
+  background-color: #d9d9d9;
+  width: 199px;
+  height: auto;
+  z-index: -2;
+  border-radius: 6px;
+  padding: 9px 5px 0px;
+}
+#userProfile {
+  cursor: pointer;
+  margin: -2px;
+}
+.fullProfileNavigator a {
+  text-decoration: none;
+  padding: 13px;
+  color: #767575;
+  border-bottom: 2px solid #767575;
+  text-align: center;
+}
+.profileNavigatorAnimator {
+  transform: translateY(22%);
+  z-index: 3;
+}
+#logout {
+  height: 29px;
+  position: relative;
+  top: -3px;
+  background: transparent;
+  width: 177px;
+  padding: 8px;
+  border-bottom: 2px solid #767575;
+}
+.logo img {
+  width: 122px;
+  position: absolute;
+  top: -20px;
+  left: 78px;
+}
+.logo1 img {
+  width: 122px;
+  position: absolute;
+  top: -20px;
+  left: 78px;
+  z-index: 1;
+}
+ul {
+  display: flex;
+}
+ul li {
+  list-style: none;
+  padding: 0px 18px;
+}
+ul li a {
+  text-decoration: none;
+  color: #aaaaaa;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  height: 28em;
+  width: 88em;
+}
+.firstCompartment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccf2f4;
+  width: 59em;
+}
+.picCompartment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ccf2f4;
+}
+.picCompartment img {
+  width: 31em;
+  position: absolute;
+  left: 55em;
+  z-index: 1;
+  filter: drop-shadow(0px 5px 3px black);
+  transition: 00.3s all;
+}
+.firstCompartment h3 {
+  position: relative;
+  left: -145px;
+  color: #868585;
+}
+.firstCompartment h1 {
+  position: relative;
+  left: -69px;
+  top: -24px;
+  font-size: 80px;
+  color: #494848;
+}
+.btn1 {
+  width: 125px;
+  height: 39px;
+  border: none;
+  background-color: #aaaaaa;
+  position: relative;
+  top: -5px;
+  left: -219px;
+  color: #f4f9f9;
+  cursor: pointer;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40em;
+  background-color: #ccf2f4;
+}
+.container1 {
+  width: 20em;
+  padding: 52px;
+  background-color: #f4f9f9;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.container1 h1 {
+  padding: 0px 0px 26px 0px;
+  margin: -18px 0px 19px;
+  color: #494848;
+}
+.p {
+  padding: 0px 4px 10px;
+  margin: -27px 0px;
+  color: #868585;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 34px 0px;
+}
+.form label {
+  color: #494848;
+}
+.form input {
+  padding: 5px;
+  margin: 8px 1px;
+  border: 2px solid #868585;
+  border-radius: 5px;
+}
+.form p {
+  padding: 13px 3px;
+}
+.registerbtn {
+  width: 125px;
+  height: 39px;
+  border: none;
+  background-color: #aaaaaa;
+  position: relative;
+  top: 11px;
+  left: 91px;
+  color: #f4f9f9;
+  cursor: pointer;
+}
+.signin {
+  color: #868585;
+}
+.loginBtn {
+  width: 125px;
+  height: 39px;
+  border: none;
+  background-color: #aaaaaa;
+  position: relative;
+  top: 11px;
+  left: 91px;
+  color: #f4f9f9;
+  cursor: pointer;
+}
+.cards {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  grid-column-gap: 89px;
+}
+.card {
+  width: 392px;
+  /* padding: 12px; */
+  margin: 72px 50px -23px;
+  /* overflow: hidden; */
+  padding: 10px;
+  background-color: #f4f9f9;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.image img {
+  width: 395px;
+  height: 251px;
+}
+.stars {
+  background-color: #3a903a;
+  width: 60px;
+  text-align: center;
+  position: relative;
+  top: -76px;
+  left: 321px;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+}
+.fa-star {
+  padding: 3px 2px;
+}
+.card h1 {
+  color: #494848;
+  font-size: 36px;
+  font-weight: 500;
+}
+.card p {
+  color: #868585;
+  font-weight: 300;
+  font-size: 20px;
+}
+.fullContainerBtn {
+  display: flex;
+}
+.firstbtn {
+  display: flex;
+  border: 2px solid #aaaaaa;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 8px 59px;
+  position: relative;
+  top: 38px;
+  background-color: #ccf2f4;
+  color: #494848;
+  cursor: pointer;
+  font-weight: 500;
+}
+.secondbtn {
+  display: flex;
+  border: 2px solid #aaaaaa;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 8px -37px;
+  position: relative;
+  top: 38px;
+  background-color: #f4f9f9;
+  color: #494848;
+  cursor: pointer;
+  font-weight: 500;
+}
+.fa-hotel {
+  padding: 0px 9px;
+}
+.fa-hamburger {
+  padding: 0px 9px;
+}
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.fa-filter {
+  position: relative;
+  top: -2px;
+  right: -40em;
+}
+.secondHeaderContainer {
+  text-align: center;
+  padding: 5px 6px;
+  margin: 6px 6px;
+  position: relative;
+  top: 38px;
+  width: 86em;
+}
+.secondHeaderContainer h1 {
+  color: #494848;
+  font-size: 36px;
+  font-weight: 500;
+}
+.secondHeaderContainer h3 {
+  color: #868585;
+  font-weight: 300;
+  font-size: 20px;
+}
+.secondfullContainer {
+  transform: translateX(0%);
+}
+.firstfullContainer {
+  position: relative;
+  top: 10px;
+}
+.fullContainer {
+  background-color: #d9f1f3a4;
+  position: relative;
+  top: 30px;
+  height: fit-content;
+  padding: 0px 0px 7em;
+  width: 88em;
+  display: grid;
+  grid-template-columns: 101% 109%;
+  grid-column-gap: 6em;
+}
+.buttonEffectOne {
+  background-color: #ccf2f4;
+}
+.buttonEffectTwo {
+  background-color: #f4f9f9;
+}
+.popularFoodEffect {
+  transform: translateX(-100%);
+  position: relative;
+  left: 0px;
+  top: 0;
+  display: block;
+}
+.popularHotelEffect {
+  transform: translateX(100%);
+}
+.popularHotelEffect2 {
+  transform: translateX(0%);
+}
+.popularFoodEffect2 {
+  transform: translateX(0%);
+}
+.thirdCompartment {
+  text-align: center;
+  margin: 61px;
+  background-color: #d9f1f3a4;
+  margin: 30px -63px;
+}
+.secondOfThirdCompartment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.working1 {
+  height: 333px;
+  /* border: 1px solid black; */
+  width: 365px;
+  /* padding: 8px; */
+  margin: 40px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f9f9;
+  border-radius: 11px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.working1:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.working1 img {
+  width: 145px;
+}
+.working1 h1 {
+  color: #494848;
+  font-size: 32px;
+  font-weight: 500;
+  padding: 20px 3px;
+}
+.working1 p {
+  color: #868585;
+  font-weight: 300;
+  font-size: 20px;
+}
+.firstOfThirdCompartment h1 {
+  color: #494848;
+  font-size: 36px;
+  font-weight: 500;
+}
+.firstOfThirdCompartment h3 {
+  color: #868585;
+  font-weight: 300;
+  font-size: 20px;
+}
+.halfBodyImage {
+  background-image: linear-gradient(
+      337deg,
+      rgba(204, 242, 244, 0.4770950616574755) 0%,
+      rgba(204, 242, 244, 0.48) 35%,
+      rgba(204, 242, 244, 0.48) 100%
+    ),
+    url(/img/bg1.jpg);
+  width: 43em;
+  position: sticky;
+  top: 0px;
+  /* left: -12em; */
+  position: sticky;
+  margin: -69px 0px;
+  height: 45em;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  background-position-x: right;
+  z-index: 2;
+}
+.hotelNameDesc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid black; */
+  padding: 0px 205px 0px 411px;
+}
+.box {
+  text-align: center;
+  border: 3px solid #ffffff;
+  width: 24em;
+  height: auto;
+  padding: 25px;
+  margin: -82px;
+}
+.box h1 {
+  color: #ffffff;
+  font-size: 47px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.box p {
+  color: #f3f3f3;
+  font-weight: 300;
+  font-size: 21px;
+}
+.fullBodyTemplate {
+  display: flex;
+  background-color: #ccf2f4;
+  height: max-content;
+}
+.halfBodyMenu {
+  position: relative;
+  width: 46em;
+  height: auto;
+  padding: 28px 15px 43px 29px;
+  overflow: hidden;
+}
+.waterMark1 h1 {
+  font-size: 172px;
+  position: absolute;
+  z-index: 0;
+  top: -33px;
+  left: -38px;
+  /* opacity: 0; */
+  color: #aaaaaa3b;
+}
+.fullMenu h1 {
+  padding: 14px;
+  font-size: 49px;
+  color: #3c3c3c;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.fullMenu p {
+  color: #626262;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+.fullMenu h3 {
+  color: #3c3c3c;
+  padding: 13px 16px 0px;
+  font-size: 16px;
+  font-weight: 600;
+}
+#bookMarkbtn1 {
+  width: 127px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 20px 2px 0px;
+  background-color: transparent;
+  border: 2px solid #3c3c3c;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3c3c3c;
+  cursor: pointer;
+}
+#bookMarkbtn2 {
+  width: 127px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 20px 2px 0px;
+  border: 2px solid #3c3c3c;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #3c3c3c;
+  color: #ccf2f4;
+  text-decoration: none;
+}
+.bookMarked {
+  text-decoration: none;
+}
+#bookMarkbtn1 i,
+#shareButton1 i {
+  padding-right: 4px;
+}
+#bookMarkbtn2:hover {
+  background-color: transparent;
+  color: #3c3c3c;
+  transition: 0.3s all;
+}
+#bookMarkbtn1:hover,
+#shareButton1:hover {
+  background-color: #3c3c3c;
+  color: #ccf2f4;
+  transition: 0.3s all;
+}
+.hotelButtons {
+  display: flex;
+}
+#shareButton1 {
+  width: 127px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 20px 15px 0px;
+  background-color: transparent;
+  border: 2px solid #3c3c3c;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3c3c3c;
+  cursor: pointer;
+}
+.navbar2 {
+  display: flex;
+  border-bottom: 2px solid #868585;
+}
+.navbar2 ul {
+  display: flex;
+}
+.navbar2 ul li {
+  padding: 43px 39px 12px 24px;
+  color: #3c3c3c;
+}
+.foodCategory {
+  border-right: 2px solid #868585;
+  width: 188px;
+  margin: 30px 0px 0px;
+}
+.foodCategory ul {
+  display: block;
+  padding: 0px 0px 21px;
+}
+.foodCategory ul li {
+  padding: 10px;
+  font-size: 14px;
+  color: #454747;
+  font-weight: 300;
+}
+#orderOnline {
+  cursor: pointer;
+}
+#reviewsCompartment {
+  cursor: pointer;
+}
+.categoryName {
+  font-size: 22px;
+  color: #454747;
+  font-weight: 800;
+}
+.fullOnlineOrder {
+  display: flex;
+  transform: translateX(0%);
+}
+.movingFullOnlineOrder {
+  transform: translateX(100%);
+}
+.onlineOrderingFood {
+  height: 31em;
+  overflow-y: scroll;
+  width: 27em;
+  padding: 7px;
+  margin: 24px;
+}
+.cardContent {
+  display: flex;
+  justify-content: space-between;
+  padding: 23px 3px 21px;
+  border-bottom: 2px solid #575858;
+}
+.writing {
+  width: 167px;
+  padding: 3px 6px;
+}
+.foodNameInMenu {
+  width: 149px;
+  height: 37px;
+  font-size: 14px;
+  color: #454747;
+  font-weight: 300;
+}
+.priceAndLike {
+  display: flex;
+}
+.btn4 {
+  background-color: transparent;
+  border: none;
+  width: 51px;
+  position: relative;
+  left: 22px;
+  color: #3c3c3c;
+  font-weight: 400;
+  font-size: 13px;
+  cursor: pointer;
+}
+.btn5 {
+  width: 117px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  position: relative;
+  top: -3px;
+  margin: 17px 0px 0px;
+  background-color: transparent;
+  border: 2px solid #3c3c3c;
+  font-size: 14px;
+  font-weight: 400;
+  color: #3c3c3c;
+  cursor: pointer;
+}
+.btn5:hover {
+  background-color: #3c3c3c;
+  color: #ccf2f4;
+  transition: 0.3s all;
+}
+.priceAndLike h3 {
+  padding: 0px;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+.img1,
+.img2,
+.img3 {
+  background-image: url(/img/bananaSandwitch.jpg);
+  width: 70px;
+  background-size: cover;
+}
+.category {
+  padding: 8px 0px;
+}
+.emptyCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40em;
+}
+.emptyCartContainer {
+  text-align: center;
+}
+.cartEmptyImage {
+  width: 29em;
+  position: relative;
+  left: 41px;
+}
+.goBackButton {
+  color: #f4f9f9;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.goBackFromCart {
+  position: relative;
+  top: 10px;
+}
+.goBackFromCart button {
+  border: none;
+  width: 103px;
+  height: 46px;
+  border-radius: 7px;
+  background-color: #aaaaaa;
+  /* color: black; */
+  cursor: pointer;
+}
+.cartEmptyH1 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #494848;
+}
+
+.cartEmptyP {
+  color: #868585;
+  font-size: 16px;
+  font-weight: 400;
+}
+.fullCartContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+      337deg,
+      rgb(204 242 244 / 73%) 0%,
+      rgb(204 242 244 / 73%) 35%,
+      rgb(204 242 244 / 73%) 100%
+    ),
+    url(/img/bg.jpg);
+  height: 651px;
+  background-size: cover;
+}
+.halfCartContainer {
+  background-color: #f4f9f9;
+  padding: 32px 26px 51px;
+  margin: 22px;
+  position: relative;
+  left: -63px;
+  height: auto;
+  border-radius: 9px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.orderForm {
+  background-color: #f4f9f9;
+  width: 505px;
+  height: 179px;
+  display: flex;
+  align-items: flex-start;
+  padding: 14px;
+}
+.orderForm input {
+  padding: 3px;
+  position: relative;
+  left: 11em;
+  top: -22px;
+  width: 185px;
+  border-radius: 6px;
+  height: 22px;
+  border: 2px solid #aaaaaa;
+}
+.orderForm textarea {
+  padding: 3px;
+  position: relative;
+  left: 81px;
+  top: -19px;
+  width: 313px;
+  height: 129px;
+  border-radius: 6px;
+  border: 2px solid #aaaaaa;
+}
+.detailsSubmit {
+  position: relative;
+  left: 17em;
+  top: 18px;
+  width: 101px;
+  text-align: center;
+  height: 45px;
+  margin: -19px;
+  border: none;
+  background-color: #aaaaaa;
+  color: #f4f9f9;
+  font-size: 13px;
+  font-weight: 600;
+}
+.firstCartContainer {
+  overflow-y: scroll;
+  height: 14em;
+  width: 23em;
+  padding: 9px;
+  box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px,
+    rgb(209 213 219) 0px 0px 0px 1px inset;
+  border-radius: 9px;
+  margin: 15px 0px;
+  background-color: #dee3e3;
+}
+.firstCartContainer::-webkit-scrollbar {
+  display: none;
+}
+.otherHalfCartContainer {
+  position: relative;
+  top: 99px;
+  left: -61px;
+}
+.fullfirstCartContainer {
+  background-color: #f4f9f9;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+  width: 24em;
+  position: relative;
+  top: -114px;
+  height: auto;
+}
+.orderCartCard {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid #aaaaaa80;
+  padding: 14px 0px;
+}
+.subtractAndAddOrder {
+  display: flex;
+  background-color: #aaaaaa;
+  border-radius: 8px;
+}
+.cancelOneOrder {
+  width: 42px;
+  /* padding: 0px; */
+  margin: 2px 14px;
+  background-color: transparent;
+  border: none;
+}
+.addOneOrder {
+  width: 42px;
+  margin: 2px 14px;
+  background-color: transparent;
+  border: none;
+}
+.subtractAndAddOrder h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.secondCartContainer {
+  position: relative;
+  top: -108px;
+  left: 1px;
+  background-color: #f4f9f9;
+  border-radius: 9px;
+  height: 134px;
+  padding: 16px 18px 67px;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+}
+.subTotalPrize {
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 26px 16px;
+}
+.deliveryPrice {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 23px 23px;
+  border-bottom: 2px solid #494848;
+}
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 24px;
+}
+.orderItButton {
+  text-align: center;
+}
+.orderItButton button {
+  width: 165px;
+  text-align: center;
+  height: 45px;
+  margin: -19px;
+  border: none;
+  background-color: #aaaaaa;
+  color: #f4f9f9;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative;
+  top: 21px;
+  left: 197px;
+  cursor: pointer;
+}
+.orderNameAndHotel h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #494848;
+  text-transform: capitalize;
+}
+.orderNameAndHotel h2,
+.halfCartContainer h3 {
+  font-size: 14px;
+  font-weight: 300;
+  color: #868585;
+  text-transform: capitalize;
+}
+.orderCartCard h3,
+.secondCartContainer h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #494848;
+}
+.yourOrders,
+.secondCartContainer h1,
+.halfCartContainer h1 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #494848;
+}
+.halfCartContainer h1 {
+  padding: 0px 0px 7px;
+}
+.halfCartContainer h3 {
+  padding: 0px 33px 7px;
+}
+.noty_theme__mint {
+  border-radius: 50px !important;
+  padding-left: 8px !important;
+}
+.fullProfileContainer {
+  display: flex;
+}
+.navigationProfileContainer {
+  width: 22em;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  align-items: end;
+  height: 650px;
+  /* border-right: 2px solid; */
+  padding: 0px;
+  margin: 0px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  background-color: #eaebeb;
+}
+.navigationProfileContainer a {
+  text-decoration: none;
+  color: #7a7879;
+}
+.navigationProfileContainer h1 {
+  padding: 15px;
+  color: #7a7879;
+}
+.navigationProfileContainer h3 {
+  padding: 12px;
+}
+.showingContent {
+  width: 49em;
+  overflow-y: scroll;
+  height: 567px;
+  padding: 42px 36px;
+  background-color: #f0f1f185;
+  color: #7a7879;
+}
+.showingProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 17em;
+  padding: 38px 1px;
+  background-color: #eaebeb;
+  color: #7a7879;
+}
+.profilePicture {
+  border: 2px solid;
+  border-radius: 53%;
+  width: 114px;
+  height: 115px;
+  /* text-align: center; */
+  padding: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.showingProfileContainer h1 {
+  padding: 29px;
+}
+.buttonForLogout {
+  display: flex;
+  flex-direction: column;
+  padding: 27px 0px 2px;
+}
+.buttonForLogout button {
+  width: 267px;
+  position: relative;
+  left: 7px;
+  height: 40px;
+  background: transparent;
+  border-bottom: 2px solid;
+  border-top: transparent;
+  border-left: transparent;
+  border-right: transparent;
+  padding: 28px;
+  cursor: pointer;
+}
+.buttonForLogout form {
+  height: 12px;
+  background-color: transparent;
+  padding: 9px 2px;
+  border: none;
+}
+.buttonForDelete form {
+  height: 12px;
+  background-color: transparent;
+  padding: 27px 2px;
+  border: none;
+}
+table {
+  border-collapse: collapse;
+  width: 101%;
+  margin: 51px 9px;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  width: 2em;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.bookMarkCard {
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+  padding: 6px 1px;
+  border-radius: 5px;
+  width: 182px;
+  position: relative;
+}
+.bookMarkCard:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.hotelBookMarkImage img {
+  width: 176px;
+}
+.fullBookMarkContainer {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  grid-column-gap: 89px;
+  grid-row-gap: 26px;
+  padding: 20px 16px;
+}
+.hotelBookMarkImage {
+  text-align: center;
+}
+.likedFoodcardContent {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 28px 15px;
+  border-bottom: 2px solid black;
+}
+/* .showingContent::-webkit-scrollbar {
+  display: none;
+} */
+.active {
+  width: 311px;
+  display: flex;
+  justify-content: end;
+  background: #aeabac;
+  color: #f4f9f9;
+}
+.deleteBookmark {
+  position: absolute;
+  top: -7px;
+  left: 167px;
+  border-radius: 50px;
+  width: 23px;
+  /* text-align: center; */
+  background-color: #f7f8f8;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+  cursor: pointer;
+}
+.foodAndReviews {
+  display: flex;
+}
+.reviews {
+  transform: translateX(112%);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding: 26px 44px;
+  position: absolute;
+}
+.reviews textarea {
+  width: 43em;
+  height: 12em;
+  position: relative;
+  left: 13px;
+  border-radius: 11px;
+  border: 2px solid #3c3c3c;
+  padding: 11px;
+}
+
+.movingFullReviews {
+  transform: translateX(-103%);
+  position: relative;
+}
+.isActive {
+  border-bottom: 5px solid #3c3c3c;
+  margin: -2px;
+}
+.reviewsH1 {
+  position: relative;
+  left: -208px;
+  top: -20px;
+}
+.commentReviews {
+  position: relative;
+  left: -259px;
+  top: -12px;
+}
+.submitReviews {
+  width: 101px;
+  text-align: center;
+  height: 44px;
+  margin: 15px;
+  position: relative;
+  left: 207px;
+  top: 6px;
+  background: transparent;
+  border: 2.5px solid #3c3c3c;
+  color: #3c3c3c;
+  font-weight: 700;
+  font-size: 15px;
+}
+.submitReviews:hover {
+  background-color: #3c3c3c;
+  border: none;
+  color: #ccf2f4;
+  transition: 0.3s all;
+}
+.commentCompartment {
+  width: 31em;
+  height: 37em;
+  overflow-y: scroll;
+  margin: 16px;
+  padding: 16px;
+}
+.commentCompartment::-webkit-scrollbar {
+  display: none;
+}
+.commentCard {
+  padding: 34px 23px;
+  background-color: white;
+  width: 25em;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+  margin: 23px;
+  border-radius: 9px;
+}
+.commentCard h2 {
+  padding: 7px 0px;
+  color: #3c3c3c;
+  font-size: 22px;
+  font-weight: 600;
+}
+.commentCard p {
+  padding: 2px 17px 0px 29px;
+}
+.reviewForm {
+  height: 14em;
+  border-bottom: 2px solid #a8c4c6;
+  width: 39em;
+}
+.noBookMark1 {
+  text-align: center;
+  padding: 61px 59px 1px;
+}
+.noBookMark1 img {
+  width: 250px;
+  opacity: 0.6;
+}
+.noBookMark2 {
+  text-align: center;
+}
+.noBookMark2 h1 {
+  opacity: 0.6;
+}
+.noOrders1 {
+  text-align: center;
+  padding: 61px 59px 1px;
+}
+.noOrders1 img {
+  width: 250px;
+  opacity: 0.6;
+}
+.noOrders2 {
+  text-align: center;
+}
+.noOrders2 h1 {
+  opacity: 0.6;
+}

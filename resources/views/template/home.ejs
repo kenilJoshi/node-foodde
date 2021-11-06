@@ -1,0 +1,121 @@
+<header>
+  <div class="firstCompartment">
+    <h3>Want Food delivery at home</h3>
+    <br />
+    <h1>Foodzo.com</h1>
+    <a href="#bookHotel"><button class="btn1">Book Now</button></a>
+  </div>
+  <div class="picCompartment">
+    <img src="/img/hero-pizza.png" id="data" alt="" />
+  </div>
+  <!-- <div class="secondCompartment"></div> -->
+</header>
+
+<div class="secondCompartment" id="bookHotel">
+  <div class="firstHeaderContainer">
+    <div class="fullContainerBtn">
+      <div class="firstbtn">
+        <i class="fas fa-hotel"></i>
+        <h3>Popular Hotel</h3>
+      </div>
+      <div class="secondbtn">
+        <i class="fas fa-hamburger"></i>
+        <h3>Popular Food</h3>
+      </div>
+    </div>
+    <div class="filterContainer">
+      <i class="fas fa-filter fa-2x"></i>
+    </div>
+  </div>
+  <div class="fullContainer">
+    <div class="firstfullContainer">
+      <div class="secondHeaderContainer">
+        <h1>Popular Hotel's</h1>
+        <h3>near me</h3>
+      </div>
+      <div class="cards">
+        <% hotels.forEach(function(hotel,i){ %>
+        <a href="/<%= hotel.name %> ">
+          <div class="card" data-hotel="<%= JSON.stringify(hotel) %>">
+            <div class="image">
+              <img src="/img/hotel.jpg" alt="hotel" />
+            </div>
+            <h1 id="hotelName"><%= hotel.name %></h1>
+            <p><%= hotel.address %></p>
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <h3>4.0</h3>
+            </div>
+          </div>
+        </a>
+        <% }) %>
+      </div>
+    </div>
+    <div class="secondfullContainer">
+      <div class="secondHeaderContainer">
+        <h1>Popular Food's</h1>
+        <h3>near me</h3>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="image">
+            <img src="/img/bananaSandwitch.jpg" alt="hotel" />
+          </div>
+          <h1>Banana Sandwitch</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <h3>4.0</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="thirdCompartment">
+  <div class="firstOfThirdCompartment">
+    <h3>HOW DOES IT WORK</h3>
+    <h1>Get served as an emperor.</h1>
+    <h3>Easy Steps To Fill Your Tummy Full.</h3>
+  </div>
+  <div class="secondOfThirdCompartment">
+    <div class="working1">
+      <img src="/img/check-list.png" alt="placing order" />
+      <h1>Placing Your Order</h1>
+      <p>Its easy to place order just click add button and add your address</p>
+    </div>
+    <div class="working1">
+      <img src="/img/wallet.png" alt="online/offline payment" />
+      <h1>online/offline payment</h1>
+      <p>Foodzo supports both online as well as offline payment</p>
+    </div>
+    <div class="working1">
+      <img src="/img/cargo.png" alt="get your order" />
+      <h1>Get your order</h1>
+      <p>You will get your order at your given address as quick as possible</p>
+    </div>
+  </div>
+</div>
+<script>
+  var start = 1;
+  function set_time() {
+    setInterval(imageShow, 4000);
+  }
+  function imageShow() {
+    var imgData;
+    if (start == 1) {
+      imgData = "/img/hero-pizza.png";
+    } else if (start == 2) {
+      imgData = "/img/dosa.png";
+    } else if (start == 3) {
+      imgData = "/img/burger.png";
+    } else {
+      imgData = "/img/hero-pizza.png";
+      start = 1;
+    }
+    document.getElementById("data").src = "" + imgData;
+    start++;
+  }
+  window.onload = set_time;
+</script>

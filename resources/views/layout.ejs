@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/css/app.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/css/all.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="/img/foodzo_Logo-removebg-preview.png" alt="Logo" />
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About-Us</a></li>
+          <li><a href="/offer">Offer</a></li>
+          <li><a href="/cart">Cart</a></li>
+          <% if(user){ %>
+          <li><h3 id="userProfile"><%= user.email %></h3></li>
+          <div class="fullProfileNavigator">
+            <a href="/<%= user.email %>/orders">Your Orders</a>
+            <a href="/<%= user.email %>/bookMarks">Bookmarks</a>
+            <a href="/<%= user.email %>/likedFood">Liked Food</a>
+            <form id="logout" action="/logout" method="POST">
+              <li>
+                <a onclick="document.getElementById('logout').submit()" href="#"
+                  >Logout</a
+                >
+              </li>
+            </form>
+          </div>
+          <% }else{ %>
+          <li><a href="/register">Register</a></li>
+          <div class="btn2">
+            <li><a href="/login">Login</a></li>
+          </div>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container"><%- body %></div>
+  </body>
+  <script src="/js/app.js"></script>
+</html>

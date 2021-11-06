@@ -1,0 +1,42 @@
+{
+  "name": "food-delivery",
+  "version": "1.0.0",
+  "description": "Food delivery service form foodzo company ",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node server.js",
+    "dev": "nodemon server.js",
+    "development": "mix",
+    "watch": "mix watch",
+    "production": "mix --production"
+  },
+  "author": "kenil joshi",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^0.21.4",
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^6.0.5",
+    "noty": "^3.2.0-beta-deprecated",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "to": "^0.2.9",
+    "update": "^0.7.4",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "laravel-mix": "^6.0.37",
+    "nodemon": "^2.0.14",
+    "resolve-url-loader": "^4.0.0",
+    "vue-template-compiler": "^2.6.14"
+  }
+}

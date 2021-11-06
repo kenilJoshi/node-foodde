@@ -1,0 +1,58 @@
+<div class="fullProfileContainer">
+  <div class="navigationProfileContainer">
+    <h1>Activity</h1>
+    <a href="/<%= user.email %>/orders"><h3 class="active">My Orders</h3></a>
+    <a href="/<%= user.email %>/bookMarks"><h3>BookMarks</h3></a>
+    <a href="/<%= user.email %>/likedFood"><h3>Liked Foods</h3></a>
+  </div>
+  <div class="showingContent">
+    <h1>My Orders</h1>
+    <% if(orders.length!=0){ %> 
+    <table>
+      <tr>
+        <th>Food-ordered</th>
+        <th>Quantity</th>
+        <th>Date</th>
+      </tr>
+      <% orders.forEach(function(order){%> 
+      <tr>
+        <td><%= orderSection.get(order._id).join(' , ') %> </td>
+        <td><%= orderSection.get(order._id).length %></td>
+        <td><%= timeAndDate.get(order._id) %> </td>
+      </tr>
+      <% }) %> 
+    </table>
+    <% }else{ %>
+      <div class="noOrders1">
+        <img src="/img/cartIsEmpty.png" alt="emptyCart">
+      </div>
+      <div class="noOrders2">
+        <h1>There are no orders</h1>
+      </div>
+    <% } %>  
+  </div>
+  <div class="showingProfileContainer">
+    <div class="profilePicture">
+      <i class="fas fa-user fa-6x"></i>
+    </div>
+    <h1>Kenil</h1>
+    <h3>keniljoshi3@gmail.com</h3>
+    <div class="buttonForLogout">
+      <form id='logoutInProfile' action="/logout" method="POST">
+      <button class="logOutButton">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </button>
+      </form>
+      <div class="buttonForDelete">
+      <form action="/delete" method="POST" class="deleteAccount">
+      <button class="deleteButton">
+        <i class="fas fa-trash-alt"></i>
+        Delete Account
+      </button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+

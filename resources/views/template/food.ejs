@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="/css/app.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css" integrity="sha512-NXUhxhkDgZYOMjaIgd89zF2w51Mub53Ru3zCNp5LTlEzMbNNAjTjDbpURYGS5Mop2cU4b7re1nOIucsVlrx9fA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo1">
+        <a href="/">
+          <img src="/img/foodzo_Logo-removebg-preview.png" alt="Logo" />
+        </a>
+      </div>
+      <div class="links2">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About-Us</a></li>
+          <li><a href="/offer">Offer</a></li>
+          <li><a href="/cart">Cart</a></li>
+          <% if(user){ %>
+            <li><h3 id="userProfile"><%= user.email %> </h3></li>
+            <div class="fullProfileNavigator">
+              <a href="/<%= user.email %>/orders ">Your Orders</a>
+              <a href="/<%= user.email %>/bookMarks ">Bookmarks</a>
+              <a href="/<%= user.email %>/likedFood">Liked Food</a>
+              <form id='logout' action="/logout" method="POST">
+                <li><a onclick="document.getElementById('logout').submit()" href="#">Logout</a></li>
+              </form>
+          </div>
+          <% }else{ %> 
+          <li><a href="/register">Register</a></li>
+          <div class="btn2">
+            <li><a href="/login">Login</a></li>
+          </div>
+          <% } %> 
+        </ul>
+      </div>
+    </div>
+    <div class="fullBodyTemplate">
+      <div class="halfBodyImage">
+        <div class="hotelNameDesc">
+          <div class="box">
+            <h1><%= hotel.name %></h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+              voluptatem fugit at exerci
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="halfBodyMenu">
+        <div class="waterMark1">
+          <h1>Restaurant</h1>
+        </div>
+        <div class="fullMenu">
+          <h1><%= hotel.name %></h1>
+          <h3>Address: <%= hotel.address %></h3>
+          <h3>Email: <%= hotel.email %></h3>
+          <h3>Phone-Number: <%= hotel.phoneNumber %></h3>
+          <div class="hotelButtons">
+            <% if(bookMarkedHotel.length!=0){ %>
+            <a href="/bookMark/<%= hotel.name %>" class='bookMarked'> 
+              <button id="bookMarkbtn2" data-hotel='<%= JSON.stringify(hotel) %> '>
+                <i class="far fa-bookmark"></i>
+                Bookmark
+              </button>
+            </a>
+            <% }else{ %>
+            <button id="bookMarkbtn1" data-hotel='<%= JSON.stringify(hotel) %> '>
+              <i class="far fa-bookmark"></i>
+              Bookmark
+            </button>
+            <% } %>    
+            <button id="shareButton1">
+              <i class="fas fa-share"></i>
+              Share
+            </button>
+          </div>
+          <div class="fullOrdering">
+          <div class="navbar2">
+            <ul>
+              <li id='orderOnline'>Order Online</li>
+              <li id='reviewsCompartment'>Reviews</li>
+            </ul>
+          </div>
+          <div class="foodAndReviews">
+          <div class="fullOnlineOrder">
+            <div class="foodCategory">
+            <% hotelCategory.forEach(function(category){ %>
+              <a href="#<%= category.category %>">
+                <ul>
+                  <li><%= category.category %> </li>
+                </ul>
+              </a>  
+            <% }) %>
+            </div>
+            <div class="onlineOrderingFood">
+              <% hotelFood.forEach(function(food){ %>
+                <div class="category <%= food.category %>">
+                  <h2 class='categoryName' id='<%= food.category %>'><%= food.category %></h2><br> 
+                  <% for(var i=0;i<food.foods.length;i++){%>
+                  <div class="cardContent">
+                    <div class="img1"></div>
+                    <div class="writing" >
+                      <h2 class='foodNameInMenu'><%= food.foods[i].name %> </h2>
+                    </div>
+                    <div class="buttons">
+                      <div class="priceAndLike">
+                      <h3 class="price">₹<%= food.foods[i].price %></h3>
+                      <button data-food='<%= JSON.stringify(food.foods[i]) %>' class="btn4">
+                      <i class="far fa-heart"></i>
+                        Like
+                      </button>    
+                      </div>
+                      <button data-food='<%= JSON.stringify(food.foods[i]) %> ' class="btn5">
+                        <i class="fas fa-shopping-cart"></i>
+                        Add to Cart
+                      </button>
+                    </div> 
+                  </div> 
+                  <% } %>
+              </div>
+              <% }) %>  
+          </div>
+          </div>
+          <div class="reviews">
+            <h1 class="reviewsH1">Reviews</h1>
+            <h3 class='commentReviews'>comment:</h3>
+            <form class="reviewForm" action="/<%= hotel.name %>/addComment" method="post">
+              <textarea rows="4" cols="50" name="comment"></textarea>
+              <button class="submitReviews">Submit</button>
+            </form>
+            <div class="commentCompartment">
+              <% for(var i=allReview.length-1;i>=0;i--){%> 
+              <div class="commentCard">
+                <h2><%= allReview[i].owner.email %></h2>
+                <div class="pComments">
+                  <p><%= allReview[i].comment %> </p>
+                </div>
+              </div>
+              <% } %> 
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/js/main.js"></script>
+</html>
