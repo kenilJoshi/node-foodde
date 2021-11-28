@@ -148,16 +148,19 @@ FDRouter.post("/updateCart", async (req, res) => {
 FDRouter.post("/addOrderDetails", ensureAuthenticated, async (req, res) => {
   // const existingOrder = await orderDetails.findOne({ owner: req.user._id });
   const sessionCart = req.session.cart.items;
+  const sessionCartPrice = req.session.cart.totalPrice;
+  const sessionDeleteCart = req.session;
   const inArray = Object.values(sessionCart);
   const id = req.user.email;
-  //if (!existingOrder) {
   const order = new orderDetails({
     ...req.body,
     owner: req.user._id,
+    totalPrice: sessionCartPrice,
   });
   for (var i = 0; i < inArray.length; i++) {
     order.orders.push({ items: inArray[i].items._id, qty: inArray[i].qty });
   }
+  delete sessionDeleteCart.cart;
   await order.save();
   res.redirect(`/${id}/orders`);
 });
@@ -362,6 +365,9 @@ FDRouter.get("/:id", async (req, res) => {
         path: "owner",
       })
       .exec();
+    const eventEmitter = req.app.get("eventEmitter");
+    const userId = req.user._id;
+    eventEmitter.emit("userId", userId.toString());
     res.status(200).render("../views/template/food", {
       hotel: hotel,
       hotelCategory: hotelCategory,

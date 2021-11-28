@@ -6249,6 +6249,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+var socket = io();
 
 
 var addToCart = document.querySelectorAll(".btn5");
@@ -6302,26 +6303,47 @@ function updateBookMark(hotel) {
   });
 }
 
-bookMarkHotel.addEventListener("click", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-  var hotel;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          hotel = JSON.parse(bookMarkHotel.dataset.hotel);
-          _context.next = 3;
-          return updateBookMark(hotel);
+var hiddenInput = document.querySelector("#hiddenInput");
+var user = hiddenInput ? hiddenInput.value : null;
+user = JSON.parse(user);
 
-        case 3:
-          window.location.reload();
+if (user) {
+  socket.emit("join", user._id.toString());
+}
 
-        case 4:
-        case "end":
-          return _context.stop();
+bookMarkHotel.addEventListener("click", /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
+    var hotel, user;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            hotel = JSON.parse(bookMarkHotel.dataset.hotel);
+            user = JSON.parse(bookMarkHotel.dataset.user); //await updateBookMark(hotel);
+            //window.location.reload();
+
+            e.preventDefault();
+
+          case 3:
+          case "end":
+            return _context.stop();
+        }
       }
-    }
-  }, _callee);
-}))); // function removeBookmark(bookMarkedHotel) {
+    }, _callee);
+  }));
+
+  return function (_x) {
+    return _ref.apply(this, arguments);
+  };
+}());
+
+function myFunction() {
+  socket.on("userId", function () {
+    console.log("kenil");
+  });
+}
+
+myFunction(); // function removeBookmark(bookMarkedHotel) {
 //   axios.post("/deleteBookmark", bookMarkedHotel).then((res) => {
 //     window.location.reload();
 //   });

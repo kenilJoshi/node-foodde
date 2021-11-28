@@ -1,6 +1,5 @@
 // import { Hotel } from '';
 // import 'mongoose';
-
 const foodButton = document.querySelector(".secondbtn");
 const hotelButton = document.querySelector(".firstbtn");
 const popularFoodCompartment = document.querySelector(".secondfullContainer");

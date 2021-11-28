@@ -12,15 +12,15 @@ const orderSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    status:{
-      type:String,
-      required:true,
-      default:'Pending'
+    status: {
+      type: String,
+      required: true,
+      default: "Pending",
     },
-    payment:{
-      type:String,
-      required:true,
-      default:'COD'
+    payment: {
+      type: String,
+      required: true,
+      default: "COD",
     },
     orders: [
       {
@@ -34,6 +34,10 @@ const orderSchema = new mongoose.Schema(
         },
       },
     ],
+    totalPrice: {
+      type: Number,
+      trim: true,
+    },
     owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

@@ -957,7 +957,7 @@ form {
   padding: 0px;
   margin: 0px;
   box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
-  background-color: #eaebeb;
+  background-color: #cccfcf;
 }
 .navigationProfileContainer a {
   text-decoration: none;
@@ -1084,7 +1084,7 @@ tr:nth-child(even) {
   display: none;
 } */
 .active {
-  width: 311px;
+  width: 325px;
   display: flex;
   justify-content: end;
   background: #aeabac;

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/css/all.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="/img/foodzo_Logo-removebg-preview.png" alt="Logo" />
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="/">logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="fullProfileContainer">
+      <div class="navigationProfileContainer">
+        <h1>Activity</h1>
+        <a href="/<%= admin._id %> /adminOrders"><h3>Orders</h3></a>
+        <a href="/<%= admin._id %> /adminHotels"
+          ><h3 class="active">DashBoard</h3></a
+        >
+      </div>
+      <di class="showingContentForAdmin">
+        <div class="backButton">
+          <a href="/<%= admin._id %> /adminHotels">
+            <i class="fas fa-chevron-left fa-2x"></i>
+          </a>
+        </div>
+        <div class="cancelButtonForClosing">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <div class="box"></div>
+        <div class="navigationForCategoryContainer">
+          <h1 style='text-transform: uppercase;'><%= hotel.name %> </h1>
+          <% hotelCategory.forEach(function(category){ %> 
+          <a href="/<%= admin._id %> /<%= category._id %>/categoryAndFood "
+            ><h3 class="active"><%= category.category %></h3></a
+          >
+          <% }) %> 
+          <div class="registerCategoryButton">
+            <div class="addButton">
+              <i class="fas fa-plus fa-1.5x"></i>
+            </div>
+          </div>
+        </div>
+        <div class="registerCategoryForm">
+          <form class="categoryForm" action="/registerCategory/admin" method="POST">
+            <h1>Register Category</h1>
+            <div class="cancelButton">
+              <div class="line1ForCategory"></div>
+              <div class="line2ForCategory"></div>
+            </div>
+            <div class="catForm">
+              Category:
+              <input
+                type="text"
+                placeholder="Category"
+                name="category"
+                required
+              />
+            </div>
+            <button type="submit" class="hotelRegisteration">
+              Register Category
+            </button>
+          </form>
+        </div>
+        <div class="hotelDetails">
+          <h1 class="hotelName" style="text-transform: capitalize;">Hotel - <%= hotel.name %></h1>
+          <form method="POST" action="/<%= hotel._id %>/ubdateHotel?_method=PATCH" class="ubdateTheHotel">
+            <h3 class='nameLabel'>Name: <b style="font-size: 50px; text-transform: uppercase;"><%= hotel.name %></b><i> Can be Changed to : </i><input type="text" placeholder="Hotel Name" name="name"></h3>
+            <h3 class='nameLabel'>Address: <b style="font-size: 30px; text-transform: capitalize;"><%= hotel.address %> </b><i> Can be Changed to : </i><textarea id="address" name="address" placeholder="Hotel Address" style="    height: 93px; width: 282px; border-radius: 10px; position: relative; top: 71px;"></textarea></h3>
+            <h3 class='nameLabel' style="position: relative; top:70px;">Phone-no: <b style="font-size: 30px;"><%= hotel.phoneNumber %> </b><i> Can be Changed to : </i><input type="text" placeholder="Hotel's Phone number" name="phoneNumber"></h3>
+            <h3 class='nameLabel' style="position: relative; top:77px;">Email: <b style="font-size: 30px; text-transform: lowercase;"><%= hotel.email %> </b><i> Can be Changed to : </i><input type="text" placeholder="Enter Email" name="email"></h3>
+            <button type="submit" class="updateHotel">Update Hotel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const cancelButtonForClosing=document.querySelector('.cancelButtonForClosing')
+    const navigationForCategoryContainer=document.querySelector('.navigationForCategoryContainer')
+    const hotelName=document.querySelector('.hotelName')
+    const box=document.querySelector('.box')
+    const ubdateTheHotel=document.querySelector('.ubdateTheHotel')
+    cancelButtonForClosing.addEventListener('click',()=>{
+      navigationForCategoryContainer.classList.toggle('navigationForCategoryContainerSlide')
+      cancelButtonForClosing.classList.toggle('cancelButtonForClosingSlide')
+      hotelName.classList.toggle('hotelNameSlide')
+      box.classList.toggle('boxSlide')
+      ubdateTheHotel.classList.toggle('updateTheHotelSlide')
+    })
+    const addHotel = document.querySelector(".addButton");
+    const registerCategoryForm = document.querySelector(".registerCategoryForm");
+    addHotel.addEventListener("click", () => {
+      registerCategoryForm.classList.toggle("formImerging");
+    });
+    const cancelButton = document.querySelector(".cancelButton");
+    cancelButton.addEventListener("click", () => {
+      registerCategoryForm.classList.remove("formImerging");
+    });
+  </script>
+</html>

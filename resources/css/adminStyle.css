@@ -1,0 +1,442 @@
+.adminForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45em;
+  background-image: linear-gradient(
+      337deg,
+      rgb(204 242 244 / 73%) 0%,
+      rgb(204 242 244 / 73%) 35%,
+      rgb(204 242 244 / 73%) 100%
+    ),
+    url(/img/bg.jpg);
+  background-size: cover;
+}
+.showingContentForAdmin {
+  width: 63em;
+  overflow-y: scroll;
+  height: 567px;
+  padding: 42px 36px;
+  background-color: #eaebeb;
+  color: #7a7879;
+}
+.cardForHotelAdmin {
+  width: 59em;
+  /* padding: 12px; */
+  margin: 68px 10px -23px;
+  /* overflow: hidden; */
+  padding: 10px;
+  background-color: #f4f9f9;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+  cursor: pointer;
+  display: flex;
+}
+.cardForHotelAdmin:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.hotelDetailsAdmin {
+  padding: 8px 20px;
+}
+.registerHotelButton,
+.registerFoodButton {
+  position: fixed;
+  top: 38em;
+  left: 80em;
+  border: none;
+  width: 43px;
+  /* text-align: center; */
+  border-radius: 67%;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3c3c3c;
+  color: #ccf2f4;
+  z-index: 9999;
+  box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  cursor: pointer;
+}
+.registerHotelButton:hover,
+.registerFoodButton:hover,
+.registerCategoryButton:hover {
+  background: #f4f9f9;
+  color: #3c3c3c;
+  transition: 0.3s all;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+}
+.registerCategoryButton {
+  left: 285px;
+  position: fixed;
+  top: 35em;
+  border: none;
+  width: 43px;
+  /* text-align: center; */
+  border-radius: 67%;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3c3c3c;
+  color: #ccf2f4;
+  z-index: 9999;
+  box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+  cursor: pointer;
+}
+
+.hotelForm,
+.foodForm,
+.categoryForm {
+  position: absolute;
+  /* display: flex; */
+  /* justify-content: center; */
+  height: 42em;
+  width: 468px;
+  top: 135px;
+  left: 35em;
+}
+.foodForm {
+  height: 20em;
+  top: 298px;
+}
+.categoryForm {
+  height: 400px;
+  top: 286px;
+}
+.fooFrm,
+.catForm {
+  padding: 19px;
+}
+.fooFrm input,
+.catForm input {
+  width: 218px;
+  height: 29px;
+  border: 2px solid #828383;
+  border-radius: 6px;
+  padding: 4px;
+}
+.registerHotelForm,
+.registerFoodForm {
+  position: absolute;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  display: none;
+  width: 95em;
+  height: 52em;
+  top: -111px;
+  left: -116px;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+}
+.registerCategoryForm {
+  position: absolute;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  display: none;
+  width: 95em;
+  height: 52em;
+  top: -111px;
+  left: -116px;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+}
+.cancelButton {
+  position: absolute;
+  top: 28px;
+  left: 25em;
+  cursor: pointer;
+}
+.cancelButtonForClosing {
+  position: absolute;
+  top: 88px;
+  left: 27em;
+  cursor: pointer;
+  padding: 0px 0px 16px;
+  z-index: 9999;
+  transition: 0.4s all;
+}
+.line1 {
+  border: 2px solid #3c3c3c;
+  width: 20px;
+  background-color: #3c3c3c;
+  margin: 5px 0px;
+  /* transform: translateX(2px) translateY(0px) rotate(43deg); */
+  border-radius: 5px;
+}
+.line2 {
+  border: 2px solid #3c3c3c;
+  width: 20px;
+  background-color: #3c3c3c;
+  /* transform: translateX(2px) translateY(-9px) rotate(314deg); */
+  /* transform: translateX(10px); */
+  border-radius: 5px;
+}
+.line3 {
+  border: 2px solid #3c3c3c;
+  width: 20px;
+  background-color: #3c3c3c;
+  margin: 4px 0px;
+  /* transform: translateX(2px) translateY(0px) rotate(43deg); */
+  border-radius: 5px;
+}
+.line1ForHotel,
+.line1ForFood,
+.line1ForCategory {
+  border: 2px solid #3c3c3c;
+  width: 20px;
+  background-color: #3c3c3c;
+  margin: 5px 0px;
+  transform: translateX(2px) translateY(0px) rotate(43deg);
+  border-radius: 5px;
+}
+.line2ForHotel,
+.line2ForFood,
+.line2ForCategory {
+  border: 2px solid #3c3c3c;
+  width: 20px;
+  background-color: #3c3c3c;
+  transform: translateX(2px) translateY(-9px) rotate(314deg);
+  /* transform: translateX(10px); */
+  border-radius: 5px;
+}
+.hotelForm h1 {
+  position: relative;
+  top: -13px;
+  left: -57px;
+  padding: 16px;
+}
+.hotelForm label {
+  padding: 9px;
+  position: relative;
+  left: -131px;
+}
+.hotelForm input {
+  padding: 4px;
+  margin: 0px;
+  position: relative;
+  left: -26px;
+  width: 230px;
+  border-radius: 8px;
+}
+.hotelRegisteration {
+  width: 125px;
+  height: 39px;
+  border: none;
+  background-color: #aaaaaa;
+  position: relative;
+  top: 22px;
+  left: 106px;
+  color: #f4f9f9;
+  cursor: pointer;
+}
+.formImerging {
+  display: block;
+}
+.navigationForCategoryContainer {
+  width: 22em;
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  align-items: end;
+  height: 650px;
+  /* border-right: 2px solid; */
+  padding: 1px;
+  margin: 0px;
+  /* box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px; */
+  background-color: #cccfcf91;
+  position: fixed;
+  left: 345px;
+  top: 4em;
+  padding: 80px 0px;
+  transform: translateX(-347px);
+  z-index: -1;
+  transition: 0.4s all;
+}
+.navigationForCategoryContainer h1 {
+  padding: 15px;
+  color: #7a7879;
+}
+.navigationForCategoryContainer a {
+  text-decoration: none;
+  color: #7a7879;
+}
+.navigationForCategoryContainer h3 {
+  padding: 12px;
+}
+.backButton {
+  position: relative;
+  left: -1em;
+  top: -27px;
+  color: #3c3c3c;
+  border-radius: 50%;
+  width: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 37px;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+  background: #f4f9f9;
+  z-index: 9999;
+}
+.hotelName {
+  position: fixed;
+  width: 898px;
+  left: 485px;
+  top: 70px;
+  padding: 11px;
+  /* width: 682px; */
+  background-color: #d9dbdb;
+  transition: 0.4s all;
+}
+.box {
+  border: 3px solid #d9d9d9;
+  position: absolute;
+  width: 84px;
+  top: 151px;
+  left: 430px;
+  height: 6px;
+  z-index: 1;
+  background: #eaebeb;
+  transition: 0.4s all;
+}
+.navigationForCategoryContainerSlide {
+  transform: translateX(0);
+  z-index: 0;
+  transition: 0.4s all;
+  background-color: #dedfdf;
+}
+.cancelButtonForClosingSlide {
+  transform: translateX(209px);
+  transition: 0.4s all;
+}
+.hotelNameSlide {
+  width: 685px;
+  left: 699px;
+  transition: 0.4s all;
+}
+.boxSlide {
+  width: 296px;
+  transition: 0.4s all;
+}
+.ubdateTheHotel {
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: baseline;
+  height: 500px;
+  padding: 0px 0px 31px;
+  transition: 0.4s all;
+}
+.updateHotel {
+  position: relative;
+  top: 119px;
+  left: 454px;
+  width: 117px;
+  height: 39px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #aaaaaa;
+  color: #f4f9f9;
+  cursor: pointer;
+  border: none;
+}
+.updateTheHotelSlide {
+  transform: translateX(326px);
+  width: 690px;
+  transition: 0.4s all;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  border-radius: 6px;
+  box-shadow: rgb(0 0 0 / 2%) 0px 1px 3px 0px,
+    rgb(27 31 35 / 15%) 0px 0px 0px 1px;
+}
+.accordion::after {
+  content: "\25be";
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 10px;
+}
+.accordion--active:after {
+  content: "\25B4";
+}
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  height: auto;
+}
+.specificCategoryForFood {
+  padding: 15px 2px;
+}
+.accordion--active,
+.accordion:hover {
+  background-color: #ccc;
+}
+.updateFormForFood,
+.updateFormForCategory {
+  height: auto;
+  background: white;
+  display: block;
+  padding: 8px;
+}
+.DeleteFormForFood,
+.DeleteFormForCategory {
+  height: auto;
+  background: white;
+  display: block;
+  padding: 8px;
+}
+.updateFood,
+.DeleteFood,
+.deleteCategory,
+.updateCategory {
+  width: 119px;
+  height: 31px;
+  text-align: center;
+  /* display: flex; */
+  position: relative;
+  left: 61em;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+.deleteCategory,
+.updateCategory {
+  width: 139px;
+  padding: 3px;
+  left: 59em;
+}
+.updateFood,
+.updateCategory {
+  color: #767676;
+  background-color: #d9dbdb;
+}
+.DeleteFood,
+.deleteCategory {
+  background: #d11a2a;
+  color: white;
+}
+.foodSectionForUpdation {
+  padding: 13px 0px;
+}

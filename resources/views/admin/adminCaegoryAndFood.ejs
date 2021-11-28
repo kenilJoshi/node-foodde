@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/css/all.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="/img/foodzo_Logo-removebg-preview.png" alt="Logo" />
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="/">logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="fullProfileContainer">
+      <div class="navigationProfileContainer">
+        <h1>Activity</h1>
+        <a href="/<%= admin._id %> /adminOrders"><h3>Orders</h3></a>
+        <a href="/<%= admin._id %> /adminHotels"
+          ><h3 class="active">DashBoard</h3></a
+        >
+      </div>
+      <div class="showingContentForAdmin">
+        <div class="backButton">
+          <a href="/<%= admin._id %> /adminHotels">
+            <i class="fas fa-chevron-left fa-2x"></i>
+          </a>
+        </div>
+        <div class="cancelButtonForClosing">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <div class="box"></div>
+        <div class="navigationForCategoryContainer">
+          <h1 style="text-transform: uppercase"><%= hotel.name %></h1>
+          <% hotelCategory.forEach(function(category){ %>
+          <a href="/<%= admin._id %> /<%= category._id %>/categoryAndFood "
+            ><h3 class="active"><%= category.category %></h3></a
+          >
+          <% }) %>
+        </div>
+        <div class="hotelDetails">
+          <h1 class="hotelName" style="text-transform: capitalize">
+            Hotel - <%= hotel.name %>
+          </h1>
+          <h1>Category</h1>
+          <div class="specificCategoryForFood">
+            <button class="accordion"><%= category.category %></button>
+            <div class="panel">
+              <form
+                method="POST"
+                action="/<%= category._id %>/hotelCategory/ubdateCategory?_method=PATCH"
+                class="updateFormForFood"
+              >
+                <h3 class="nameLabel">
+                  Category:
+                  <b style="font-size: 50px; text-transform: uppercase"
+                    ><%= category.category %> </b
+                  ><i> Can be Changed to : </i
+                  ><input type="text" placeholder="Category" name="category" />
+                </h3>
+                <button type="submit" class="updateCategory">
+                  Update Category
+                </button>
+              </form>
+              <form
+                method="POST"
+                action="/<%= category._id %>/hotelCategory/deleteCategory?_method=DELETE"
+                class="DeleteFormForCategory"
+              >
+                <button type="submit" class="deleteCategory">
+                  Delete Category
+                </button>
+              </form>
+            </div>
+          </div>
+          <h1>Food</h1>
+          <% hotelFoods.forEach(function(food){ %>
+          <div class="foodSectionForUpdation">
+            <button class="accordion"><%= food.name %></button>
+            <div class="panel">
+              <form
+                method="POST"
+                action="/<%= food._id %>/ubdateFood?_method=PATCH"
+                class="updateFormForCategory"
+              >
+                <h3 class="nameLabel">
+                  Food Name:
+                  <b style="font-size: 50px; text-transform: uppercase"
+                    ><%= food.name %> </b
+                  ><i> Can be Changed to : </i
+                  ><input type="text" placeholder="Food Name" name="name" />
+                </h3>
+                <h3 class="nameLabel">
+                  Price:
+                  <b style="font-size: 30px; text-transform: uppercase"
+                    ><%= food.price %> </b
+                  ><i> Can be Changed to : </i
+                  ><input type="text" placeholder="Price" name="price" />
+                </h3>
+                <button type="submit" class="updateFood">Update Food</button>
+              </form>
+              <form
+                method="POST"
+                action="/<%= food._id %>/deleteFood?_method=DELETE"
+                class="DeleteFormForFood"
+              >
+                <button type="submit" class="DeleteFood">Delete Food</button>
+              </form>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+        <div class="registerFoodButton">
+          <div class="addButton">
+            <i class="fas fa-plus fa-1.5x"></i>
+          </div>
+        </div>
+        <div class="registerFoodForm">
+          <form class="foodForm" action="/registerFood/admin" method="POST">
+            <h1>Register Food</h1>
+            <div class="cancelButton">
+              <div class="line1ForFood"></div>
+              <div class="line2ForFood"></div>
+            </div>
+            <div class="fooFrm">
+              Name:
+              <input
+                type="text"
+                placeholder="Hotel Name"
+                name="name"
+                required
+              />
+            </div>
+            <div class="fooFrm">
+              Price:
+              <input
+                type="text"
+                placeholder="Food Price"
+                name="price"
+                required
+              />
+            </div>
+            <button type="submit" class="hotelRegisteration">
+              Register Food
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const cancelButtonForClosing = document.querySelector(
+      ".cancelButtonForClosing"
+    );
+    const navigationForCategoryContainer = document.querySelector(
+      ".navigationForCategoryContainer"
+    );
+    const hotelName = document.querySelector(".hotelName");
+    const box = document.querySelector(".box");
+    const ubdateTheHotel = document.querySelector(".ubdateTheHotel");
+    cancelButtonForClosing.addEventListener("click", () => {
+      navigationForCategoryContainer.classList.toggle(
+        "navigationForCategoryContainerSlide"
+      );
+      cancelButtonForClosing.classList.toggle("cancelButtonForClosingSlide");
+      hotelName.classList.toggle("hotelNameSlide");
+      box.classList.toggle("boxSlide");
+      ubdateTheHotel.classList.toggle("updateTheHotelSlide");
+    });
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("accordion--active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+    const addHotel = document.querySelector(".addButton");
+    const registerFoodForm = document.querySelector(".registerFoodForm");
+    addHotel.addEventListener("click", () => {
+      registerFoodForm.classList.toggle("formImerging");
+    });
+    const cancelButton = document.querySelector(".cancelButton");
+    cancelButton.addEventListener("click", () => {
+      registerFoodForm.classList.remove("formImerging");
+    });
+  </script>
+</html>

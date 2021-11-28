@@ -53,6 +53,7 @@
           </div>
         </div>
       </div>
+      <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(user) %>">
       <div class="halfBodyMenu">
         <div class="waterMark1">
           <h1>Restaurant</h1>
@@ -71,7 +72,7 @@
               </button>
             </a>
             <% }else{ %>
-            <button id="bookMarkbtn1" data-hotel='<%= JSON.stringify(hotel) %> '>
+            <button id="bookMarkbtn1" data-hotel='<%= JSON.stringify(hotel) %> ' data-user='<%= JSON.stringify(user) %> '>
               <i class="far fa-bookmark"></i>
               Bookmark
             </button>
@@ -151,5 +152,6 @@
       </div>
     </div>
   </body>
+  <script src="/socket.io/socket.io.js"></script>
   <script src="/js/main.js"></script>
 </html>

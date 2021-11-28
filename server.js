@@ -1,17 +1,31 @@
 // index.js
 const express = require("express");
 const app = express();
+const http = require("http");
+const server = http.createServer(app);
 const mongoose = require("mongoose");
 require("./app/mongoose/mongoose");
 const expressLayout = require("express-ejs-layouts");
 const session = require("express-session");
 const flash = require("express-flash");
+const { Server } = require("socket.io");
+const io = new Server(server);
 const MongoDBStore = require("connect-mongo");
 const { FDRouter } = require("./routes/web");
 const { hotelRouter } = require("./routes/api");
 const passport = require("passport");
+const Emitter = require("events");
 const path = require("path");
+var methodOverride = require("method-override");
+const swaggerUi = require("swagger-ui-express");
+const YAML = require("yamljs");
+const swaggerDocument = YAML.load("./swagger.yaml");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+const eventEmitter = new Emitter();
+app.set("eventEmitter", eventEmitter);
+
+app.use(methodOverride("_method"));
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(expressLayout);
@@ -32,11 +46,13 @@ app.use(
 app.use(flash());
 
 const passportInit = require("./app/config/passport");
+//const { authForAdmin } = require("./app/middleware/auth");
+//console.log(authForAdmin());
 passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   res.locals.session = req.session;
   res.locals.user = req.user;
   next();
@@ -47,6 +63,14 @@ app.use(express.json());
 app.use(FDRouter);
 app.use(hotelRouter);
 
+io.on("connection", (socket) => {
+  socket.on("join", (user) => {
+    socket.join(user);
+  });
+});
+eventEmitter.on("userId", (data) => {
+  io.to(`${data}`).emit("userId", data);
+});
 // const { foodCategory } = require("./app/models/category");
 //const { Hotel } = require("./app/models/hotelModel");
 //const { User } = require('./app/models/user');
@@ -78,6 +102,6 @@ app.use(hotelRouter);
 
 // console.log(querystring.parse(url));
 
-app.listen(port, function () {
+server.listen(port, function () {
   console.log("Server is listening at port " + port);
 });

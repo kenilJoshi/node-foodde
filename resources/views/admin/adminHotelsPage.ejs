@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/css/all.css" />
+    <title>Document</title>
+  </head>
+  <body>
+        <nav>
+      <div class="logo">
+        <img src="/img/foodzo_Logo-removebg-preview.png" alt="Logo" />
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="/">logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="fullProfileContainer">
+  <div class="navigationProfileContainer">
+    <h1>Activity</h1>
+    <a href="/<%= admin._id %> /adminOrders"><h3>Orders</h3></a>
+    <a href="/<%= admin._id %> /adminHotels"><h3 class="active">DashBoard</h3></a>
+  </div>
+  <div class="showingContentForAdmin"> 
+    <h1>Hotels</h1>
+     <div class="cardsForHotelAdmin">
+       <% hotels.forEach(function(hotel){ %> 
+        <a href="/<%= admin._id %> /<%= hotel._id %>/hoteDashBoard ">
+          <div class="cardForHotelAdmin">
+            <div class="imageForHotelAdmin">
+              <img src="/img/hotel.jpg" alt="hotel" />
+            </div>
+            <div class="hotelDetailsAdmin">
+            <h1 id="hotelName"><%= hotel.name %> </h1>
+            <p><%= hotel.address %> </p>
+            </div>
+          </div>
+        </a>
+        <% }) %> 
+     </div>
+     <div class="registerHotelButton">
+       <div class="addButton">
+         <i class="fas fa-plus fa-1.5x"></i>
+       </div>
+     </div> 
+     <div class="registerHotelForm">
+       <form class="hotelForm" action="/registerHotel/admin" method="POST">
+          <h1>Register Hotel</h1>
+          <div class="cancelButton">
+            <div class="line1ForHotel"></div>
+            <div class="line2ForHotel"></div>
+          </div>
+          <label for="name"><b>Name</b></label>
+          <input type="text" placeholder="Hotel Name" name="name" required>
+          <label for="address">Address</label>
+          <textarea id="address" name="address" placeholder="Hotel Address" style="height: 201px; width: 282px; padding: 5px; margin: 6px; border-radius:10px;"></textarea>
+          <label for="phoneNumber"><b style="position: relative; left:22px;">PhoneNumber</b></label>
+          <input type="text" placeholder="Hotel's Phone number" name="phoneNumber" required>
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+          <button type="submit" class="hotelRegisteration">Register Hotel</button>
+       </form>
+     </div>
+  </div>
+  </body>
+  <script>
+    const addHotel=document.querySelector('.addButton')
+    const registerHotelForm=document.querySelector('.registerHotelForm')
+    addHotel.addEventListener('click',()=>{
+      registerHotelForm.classList.toggle('formImerging')
+    })
+    const cancelButton=document.querySelector('.cancelButton')
+    cancelButton.addEventListener('click',()=>{
+      registerHotelForm.classList.remove('formImerging')
+    })
+  </script>
+</html>

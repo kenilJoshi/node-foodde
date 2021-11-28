@@ -1,6 +1,4 @@
-//const { default: axios } = require("axios");
 import axios from "axios";
-
 const profileClick = document.getElementById("userProfile");
 const fullProfileNavigator = document.querySelector(".fullProfileNavigator");
 

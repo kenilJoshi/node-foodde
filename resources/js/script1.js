@@ -1,3 +1,4 @@
+var socket = io();
 import axios from "axios";
 import Noty from "noty";
 const addToCart = document.querySelectorAll(".btn5");
@@ -52,11 +53,27 @@ function updateBookMark(hotel) {
     }
   });
 }
-bookMarkHotel.addEventListener("click", async function () {
+
+let hiddenInput = document.querySelector("#hiddenInput");
+let user = hiddenInput ? hiddenInput.value : null;
+user = JSON.parse(user);
+if (user) {
+  socket.emit("join", user._id.toString());
+}
+
+bookMarkHotel.addEventListener("click", async function (e) {
   const hotel = JSON.parse(bookMarkHotel.dataset.hotel);
-  await updateBookMark(hotel);
-  window.location.reload();
+  const user = JSON.parse(bookMarkHotel.dataset.user);
+  //await updateBookMark(hotel);
+  //window.location.reload();
+  e.preventDefault();
 });
+function myFunction() {
+  socket.on("userId", () => {
+    console.log("kenil");
+  });
+}
+myFunction();
 // function removeBookmark(bookMarkedHotel) {
 //   axios.post("/deleteBookmark", bookMarkedHotel).then((res) => {
 //     window.location.reload();

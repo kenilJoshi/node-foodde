@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/css/all.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="/img/foodzo_Logo-removebg-preview.png" alt="Logo" />
+      </div>
+      <div class="links">
+        <ul>
+          <li><a href="/">logout</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="fullProfileContainer">
+  <div class="navigationProfileContainer">
+    <h1>Activity</h1>
+    <a href="/<%= admin._id %> /adminOrders"><h3 class="active">Orders</h3></a>
+    <a href="/<%= admin._id %> /adminHotels"><h3>DashBoard</h3></a>
+  </div>
+  <div class="showingContentForAdmin">
+    <h1>Orders</h1>
+    <table>
+      <tr>
+        <th>phoneNumber</th>
+        <th>Address</th>
+        <th>Food-ordered</th>
+        <th>Price</th>
+        <th>Date</th>
+      </tr>
+      <% orders.forEach(function(order){%>
+      <tr>
+        <th><%= order.phoneNumber %> </th>
+        <th><%= order.address %> </th>
+        <th><%= orderDetails.get(order._id).join(',') %> </th>
+        <th><%= order.totalPrice %> </th>
+        <th><%= date.get(order._id) %> </th>
+      </tr>
+      <% }) %> 
+    </table>  
+  </div>
+  </body>
+</html>
