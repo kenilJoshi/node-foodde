@@ -6319,12 +6319,15 @@ bookMarkHotel.addEventListener("click", /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             hotel = JSON.parse(bookMarkHotel.dataset.hotel);
-            user = JSON.parse(bookMarkHotel.dataset.user); //await updateBookMark(hotel);
-            //window.location.reload();
+            user = JSON.parse(bookMarkHotel.dataset.user);
+            _context.next = 4;
+            return updateBookMark(hotel);
 
+          case 4:
+            window.location.reload();
             e.preventDefault();
 
-          case 3:
+          case 6:
           case "end":
             return _context.stop();
         }

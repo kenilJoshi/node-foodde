@@ -1,34 +1,37 @@
-const mongoose=require('mongoose');
+const mongoose = require("mongoose");
 
-const foodSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  price: {
-    type: Number,
-    require: true,
-    trim: true,
-  },
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "Hotel",
-  },
-  categories: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "foodCategory",
+const foodSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
     },
-  ],
-  likedFood:[
-    {
-      type:mongoose.Schema.Types.ObjectId,
-      ref:'User'
-    }
-  ]
-});
+    price: {
+      type: Number,
+      require: true,
+      trim: true,
+    },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "Hotel",
+    },
+    categories: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "foodCategory",
+      },
+    ],
+    likedFood: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 // foodSchema.virtual("owner", {
 //   ref: "foodCategory",
@@ -36,8 +39,8 @@ const foodSchema = new mongoose.Schema({
 //   foreignField:'owner'
 // });
 
-const foods=mongoose.model('food',foodSchema)
+const foods = mongoose.model("food", foodSchema);
 
-module.exports={
-    foods
-}
+module.exports = {
+  foods,
+};

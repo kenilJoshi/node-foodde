@@ -27,10 +27,10 @@
         <% foodOrdered.forEach(function(orderDetails){%> 
         <div class="orderCartCard">
           <div class="orderNameAndHotel">
-            <h1><%= orderDetails._doc.name %> </h1>
-            <h2><%= orderDetails._doc.owner.name %></h2>
+            <h1><%= orderDetails.name %> </h1>
+            <h2><%= orderDetails.owner %></h2>
           </div>
-          <h3><%= orderDetails._doc.price%></h3>
+          <h3><%= orderDetails.price%></h3>
           <div class="subtractAndAddOrder">
             <button class="cancelOneOrder">
               <i class="fas fa-minus"></i>

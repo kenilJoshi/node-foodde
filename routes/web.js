@@ -21,7 +21,11 @@ const FDRouter = new express.Router();
 FDRouter.get("/", async (req, res) => {
   try {
     const url = queryString.parse(req.url);
-    const hotel = await Hotel.find({});
+    const hotel = await Hotel.find(
+      {},
+      { phoneNumber: 0, email: 0, bookMarkedUser: 0, _id: 0 }
+    );
+    console.log(hotel);
     res.render("../views/template/home", { hotels: hotel });
   } catch (e) {
     res.status(404).send(e);
@@ -42,16 +46,20 @@ FDRouter.get("/cart", async (req, res) => {
   if (req.session.cart) {
     const sessionCart = req.session.cart.items;
     const inArray = Object.values(sessionCart);
-    //console.log(inArray);
     for (var i = 0; i < inArray.length; i++) {
       const specificFood = await foods
-        .findById(inArray[i].items._id)
+        .findById(inArray[i].items._id, {
+          categories: 0,
+          likedFood: 0,
+        })
         .populate({
           path: "owner",
         })
         .exec();
       orderedFood.push({
-        ...specificFood,
+        name: specificFood.name,
+        price: specificFood.price,
+        owner: specificFood.owner.name,
         qty: inArray[i].qty,
       });
     }
@@ -168,9 +176,23 @@ FDRouter.post("/updateBookmark", ensureAuthenticated, async (req, res) => {
   const hotelId = req.body._id;
   const userId = req.user._id;
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId, {
+      email: 0,
+      password1: 0,
+      role: 0,
+      likedFood: 0,
+      reviewId: 0,
+      createdAt: 0,
+      updatedAt: 0,
+    });
     user.bookMarkedHotel.push(hotelId);
-    const hotel = await Hotel.findById(hotelId);
+    const hotel = await Hotel.findById(hotelId, {
+      name: 0,
+      address: 0,
+      phoneNumber: 0,
+      email: 0,
+      updatedAt: 0,
+    });
     hotel.bookMarkedUser.push(userId);
     const bookMark = new bookMarks({
       bookMarkedHotel: hotelId,
@@ -246,7 +268,10 @@ FDRouter.get("/:id/orders", ensureAuthenticated, async (req, res) => {
   });
 });
 FDRouter.get("/:id/bookMarks", ensureAuthenticated, async (req, res) => {
-  const bookMark = await bookMarks.find({ owner: req.user._id });
+  const bookMark = await bookMarks.find(
+    { owner: req.user._id },
+    { bookMarkedHotel: 0, owner: 0 }
+  );
   console.log(bookMark);
   res.status(200).render("../views/userProfile/bookmarks", {
     bookMarkedHotel: bookMark,
@@ -309,8 +334,7 @@ FDRouter.get("/:id/likedFood", ensureAuthenticated, async (req, res) => {
 });
 FDRouter.post("/:id/addComment", async (req, res) => {
   const id = req.params.id;
-  const hotel = await Hotel.findOne({ name: id });
-  console.log(hotel);
+
   const comment = new reviews({
     comment: req.body.comment,
     owner: req.user._id,
@@ -365,9 +389,11 @@ FDRouter.get("/:id", async (req, res) => {
         path: "owner",
       })
       .exec();
-    const eventEmitter = req.app.get("eventEmitter");
-    const userId = req.user._id;
-    eventEmitter.emit("userId", userId.toString());
+    if (req.user) {
+      const eventEmitter = req.app.get("eventEmitter");
+      const userId = req.user._id;
+      eventEmitter.emit("userId", userId.toString());
+    }
     res.status(200).render("../views/template/food", {
       hotel: hotel,
       hotelCategory: hotelCategory,

@@ -64,8 +64,8 @@ if (user) {
 bookMarkHotel.addEventListener("click", async function (e) {
   const hotel = JSON.parse(bookMarkHotel.dataset.hotel);
   const user = JSON.parse(bookMarkHotel.dataset.user);
-  //await updateBookMark(hotel);
-  //window.location.reload();
+  await updateBookMark(hotel);
+  window.location.reload();
   e.preventDefault();
 });
 function myFunction() {

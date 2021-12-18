@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "laravel-mix": "^6.0.37",
-    "nodemon": "^2.0.14",
+    "nodemon": "^2.0.15",
     "resolve-url-loader": "^4.0.0",
     "vue-template-compiler": "^2.6.14"
   }

@@ -1,34 +1,37 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
-const hotelSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  address: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  phoneNumber: {
-    type: Number,
-    required: true,
-    trim: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  bookMarkedUser: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+const hotelSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true,
     },
-  ],
-});
+    address: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    phoneNumber: {
+      type: Number,
+      required: true,
+      trim: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    bookMarkedUser: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 hotelSchema.virtual("category", {
   ref: "foodCategory",
