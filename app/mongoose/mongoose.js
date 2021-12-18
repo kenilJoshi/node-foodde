@@ -1,8 +1,10 @@
-const mongoose=require('mongoose')
+const mongoose = require("mongoose");
 
-mongoose.connect('mongodb://127.0.0.1:27017/food-delivery-api',{
-    useNewUrlParser:true,
-})
+const DB_URL =
+  "mongodb+srv://Bkj:Bkj%405454721@cluster0.k3tur.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+mongoose.connect(DB_URL, {
+  useNewUrlParser: true,
+});
 //const connection=mongoose.Connection
 // connection.once('open',()=>{
 //     console.log('database connected...');
