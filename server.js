@@ -36,7 +36,8 @@ app.use(
   session({
     secret: "lflnjndfsjndjnf",
     store: MongoDBStore.create({
-      mongoUrl: "mongodb://127.0.0.1:27017/food-delivery-api",
+      mongoUrl:
+        "mongodb+srv://Bkj:Bkj%405454721@cluster0.k3tur.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     }),
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
     resave: false,
