@@ -17,9 +17,8 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/about">About-Us</a></li>
-          <li><a href="/offer">Offer</a></li>
-          <li><a href="/cart">Cart</a></li>
           <% if(user){ %>
+          <li><a href="/cart">Cart</a></li>
           <li><h3 id="userProfile"><%= user.email %></h3></li>
           <div class="fullProfileNavigator">
             <a href="/<%= user.email %>/orders">Your Orders</a>

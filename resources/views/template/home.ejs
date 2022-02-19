@@ -118,4 +118,7 @@
     start++;
   }
   window.onload = set_time;
+  fetch("http://localhost:3300/hotels/allHotel")
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 </script>

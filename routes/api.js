@@ -367,7 +367,7 @@ hotelRouter.post("/admin/createHotel", auth, async (req, res) => {
     res.status(404).send("error");
   }
 });
-hotelRouter.get("/hotels/allHotel", auth, async (req, res) => {
+hotelRouter.get("/hotels/allHotel", async (req, res) => {
   try {
     const nameOfHotel = querystring.parse(req.url);
     console.log(nameOfHotel);

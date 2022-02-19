@@ -133,12 +133,16 @@ header {
   width: 125px;
   height: 39px;
   border: none;
-  background-color: #aaaaaa;
+  background-color: #868589;
   position: relative;
   top: -5px;
   left: -219px;
   color: #f4f9f9;
   cursor: pointer;
+  transition: 0.2s all;
+}
+.btn1:hover {
+  background-color: #666565;
 }
 form {
   display: flex;
@@ -213,6 +217,9 @@ form {
   grid-template-columns: 25% 25% 25%;
   grid-column-gap: 89px;
 }
+.cards a {
+  text-decoration: none;
+}
 .card {
   width: 392px;
   /* padding: 12px; */
@@ -250,6 +257,7 @@ form {
   color: #494848;
   font-size: 36px;
   font-weight: 500;
+  text-transform: capitalize;
 }
 .card p {
   color: #868585;
@@ -453,7 +461,7 @@ form {
   /* border: 1px solid black; */
   padding: 0px 205px 0px 411px;
 }
-.box {
+.boxDesign {
   text-align: center;
   border: 3px solid #ffffff;
   width: 24em;
@@ -461,13 +469,13 @@ form {
   padding: 25px;
   margin: -82px;
 }
-.box h1 {
+.boxDesign h1 {
   color: #ffffff;
   font-size: 47px;
   font-weight: 800;
   text-transform: uppercase;
 }
-.box p {
+.boxDesign p {
   color: #f3f3f3;
   font-weight: 300;
   font-size: 21px;
@@ -514,7 +522,7 @@ form {
   font-size: 16px;
   font-weight: 600;
 }
-#bookMarkbtn1 {
+.bookMark1 {
   width: 127px;
   height: 46px;
   display: flex;
@@ -529,7 +537,7 @@ form {
   color: #3c3c3c;
   cursor: pointer;
 }
-#bookMarkbtn2 {
+.bookMark2 {
   width: 127px;
   height: 46px;
   display: flex;
@@ -548,16 +556,17 @@ form {
 .bookMarked {
   text-decoration: none;
 }
-#bookMarkbtn1 i,
+.bookMark1 i,
+.bookMark2 i,
 #shareButton1 i {
   padding-right: 4px;
 }
-#bookMarkbtn2:hover {
+.bookMark2:hover {
   background-color: transparent;
   color: #3c3c3c;
   transition: 0.3s all;
 }
-#bookMarkbtn1:hover,
+.bookMark1:hover,
 #shareButton1:hover {
   background-color: #3c3c3c;
   color: #ccf2f4;
@@ -620,10 +629,9 @@ form {
 }
 .fullOnlineOrder {
   display: flex;
-  transform: translateX(0%);
 }
-.movingFullOnlineOrder {
-  transform: translateX(100%);
+.displayFullOnlineOrder {
+  display: none;
 }
 .onlineOrderingFood {
   height: 31em;
@@ -1117,17 +1125,24 @@ tr:nth-child(even) {
     rgb(27 31 35 / 15%) 0px 0px 0px 1px;
   cursor: pointer;
 }
-.foodAndReviews {
+/* .foodAndReviews {
   display: flex;
-}
+} */
 .reviews {
-  transform: translateX(112%);
+  /* transform: translateX(112%); */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center; */
+  display: none;
+  padding: 26px 44px;
+  position: relative;
+}
+.displayReviews {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding: 26px 44px;
-  position: absolute;
 }
 .reviews textarea {
   width: 43em;
@@ -1237,6 +1252,16 @@ tr:nth-child(even) {
 }
 .noOrders2 h1 {
   opacity: 0.6;
+}
+.noCommentImage img {
+  opacity: 0.6;
+}
+.noComments {
+  text-align: center;
+}
+.noComments h1 {
+  opacity: 0.6;
+  font-size: 32px;
 }
 
 .adminForm {

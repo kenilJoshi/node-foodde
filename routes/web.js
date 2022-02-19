@@ -25,7 +25,6 @@ FDRouter.get("/", async (req, res) => {
       {},
       { phoneNumber: 0, email: 0, bookMarkedUser: 0, _id: 0 }
     );
-    console.log(hotel);
     res.render("../views/template/home", { hotels: hotel });
   } catch (e) {
     res.status(404).send(e);
@@ -172,38 +171,69 @@ FDRouter.post("/addOrderDetails", ensureAuthenticated, async (req, res) => {
   await order.save();
   res.redirect(`/${id}/orders`);
 });
-FDRouter.post("/updateBookmark", ensureAuthenticated, async (req, res) => {
-  const hotelId = req.body._id;
-  const userId = req.user._id;
-  try {
-    const user = await User.findById(userId, {
-      email: 0,
-      password1: 0,
-      role: 0,
-      likedFood: 0,
-      reviewId: 0,
-      createdAt: 0,
-      updatedAt: 0,
-    });
-    user.bookMarkedHotel.push(hotelId);
-    const hotel = await Hotel.findById(hotelId, {
-      name: 0,
-      address: 0,
-      phoneNumber: 0,
-      email: 0,
-      updatedAt: 0,
-    });
-    hotel.bookMarkedUser.push(userId);
-    const bookMark = new bookMarks({
-      bookMarkedHotel: hotelId,
-      owner: userId,
-      hotelName: req.body.name,
-    });
-    await bookMark.save();
+FDRouter.post("/updateBookmark", async (req, res) => {
+  const bookMark = await bookMarks.find({
+    bookMarkedHotel: req.body.hotelId,
+    owner: req.body.userId,
+  });
+  if (bookMark.length !== 0) {
+    const hotel = await Hotel.findOne({ name: req.body.hotelName });
+    for (var i = 0; i < hotel.bookMarkedUser.length; i++) {
+      if ((hotel.bookMarkedUser[i] = req.user._id)) {
+        hotel.bookMarkedUser.splice(i, 1);
+      }
+    }
     await hotel.save();
+    const user = await User.findById(req.user._id);
+    for (var i = 0; i < user.bookMarkedHotel.length; i++) {
+      if ((user.bookMarkedHotel[i] = req.body._id)) {
+        user.bookMarkedHotel.splice(i, 1);
+      }
+    }
+    const filter = user.bookMarkedHotel.filter(function (el) {
+      return el != null;
+    });
+    user.bookMarkedHotel = filter;
     await user.save();
-  } catch (e) {
-    console.log("Error");
+    await bookMarks.deleteOne({
+      owner: req.body.userId,
+      hotelName: req.body.hotelName,
+    });
+    res.json({ status: "deleted" });
+  } else {
+    const hotelId = req.body.hotelId;
+    const userId = req.body.userId;
+    try {
+      const user = await User.findById(userId, {
+        email: 0,
+        password1: 0,
+        role: 0,
+        likedFood: 0,
+        reviewId: 0,
+        createdAt: 0,
+        updatedAt: 0,
+      });
+      user.bookMarkedHotel.push(hotelId);
+      const hotel = await Hotel.findById(hotelId, {
+        name: 0,
+        address: 0,
+        phoneNumber: 0,
+        email: 0,
+        updatedAt: 0,
+      });
+      hotel.bookMarkedUser.push(userId);
+      const bookMark = new bookMarks({
+        bookMarkedHotel: hotelId,
+        owner: userId,
+        hotelName: req.body.hotelName,
+      });
+      await bookMark.save();
+      await hotel.save();
+      await user.save();
+      res.json({ status: "Added" });
+    } catch (e) {
+      console.log("Error");
+    }
   }
 });
 FDRouter.post("/likedFood", ensureAuthenticated, async (req, res) => {
@@ -297,30 +327,6 @@ FDRouter.post("/deleteBookmark", async (req, res) => {
     owner: req.user._id,
     hotelName: req.body.hotelName,
   });
-});
-FDRouter.get("/bookMark/:id", async (req, res) => {
-  const id = req.params.id;
-  const hotel = await Hotel.findOne({ name: id });
-  console.log(hotel.bookMarkedUser);
-  for (var i = 0; i < hotel.bookMarkedUser.length; i++) {
-    if ((hotel.bookMarkedUser[i] = req.user._id)) {
-      hotel.bookMarkedUser.splice(i, 1);
-    }
-  }
-  await hotel.save();
-  const user = await User.findById(req.user._id);
-  for (var i = 0; i < user.bookMarkedHotel.length; i++) {
-    if ((user.bookMarkedHotel[i] = req.body._id)) {
-      user.bookMarkedHotel.splice(i, 1);
-    }
-  }
-  const filter = user.bookMarkedHotel.filter(function (el) {
-    return el != null;
-  });
-  user.bookMarkedHotel = filter;
-  await user.save();
-  await bookMarks.deleteOne({ owner: req.user._id, hotelName: id });
-  res.redirect("..");
 });
 FDRouter.get("/:id/likedFood", ensureAuthenticated, async (req, res) => {
   const user = await User.findOne({ email: req.params.id })

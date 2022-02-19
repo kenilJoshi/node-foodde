@@ -2071,12 +2071,12 @@ module.exports = {
   \*******************************/
 /***/ (() => {
 
-var profileClick = document.getElementById("userProfile");
-var fullProfileNavigator = document.querySelector(".fullProfileNavigator");
-profileClick.addEventListener("click", function () {
-  console.log("kenil");
-  fullProfileNavigator.classList.toggle("profileNavigatorAnimator");
-});
+// const profileClick = document.getElementById("userProfile");
+// const fullProfileNavigator = document.querySelector(".fullProfileNavigator");
+// profileClick.addEventListener("click", () => {
+//   console.log("kenil");
+//   fullProfileNavigator.classList.toggle("profileNavigatorAnimator");
+// });
 
 /***/ }),
 
@@ -2086,8 +2086,6 @@ profileClick.addEventListener("click", function () {
   \******************************/
 /***/ (() => {
 
-// import { Hotel } from '';
-// import 'mongoose';
 var foodButton = document.querySelector(".secondbtn");
 var hotelButton = document.querySelector(".firstbtn");
 var popularFoodCompartment = document.querySelector(".secondfullContainer");
@@ -2118,26 +2116,7 @@ foodButton.addEventListener("click", function () {
 profileClick.addEventListener("click", function () {
   console.log("kenil");
   fullProfileNavigator.classList.toggle("profileNavigatorAnimator");
-}); // var start = 1;
-// function set_time() {
-//   setInterval(imageShow(), 2000);
-// }
-// function imageShow() {
-//   var imgData;
-//   if (start == 1) {
-//     imgData = "/img/hero-pizza.png";
-//   } else if (start == 2) {
-//     imgData = "/img/dosa.png";
-//   } else if (start == 3) {
-//     imgData = "/img/burger.png";
-//   } else {
-//     imgData = "/img/hero-pizza.png";
-//     start = 1;
-//   }
-//   document.getElementById("data").src = "" + imgData;
-//   start++;
-// }
-// set_time();
+});
 
 /***/ }),
 

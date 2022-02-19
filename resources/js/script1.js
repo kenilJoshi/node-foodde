@@ -3,7 +3,6 @@ import axios from "axios";
 import Noty from "noty";
 const addToCart = document.querySelectorAll(".btn5");
 const bookMarkHotel = document.getElementById("bookMarkbtn1");
-// const bookMarkDelete = document.getElementById("bookMarkbtn2");
 const likedFood = document.querySelectorAll(".btn4");
 const fullProfileNavigator = document.querySelector(".fullProfileNavigator");
 const profileClick = document.getElementById("userProfile");
@@ -40,51 +39,59 @@ addToCart.forEach((btn) => {
   });
 });
 
-function updateBookMark(hotel) {
-  axios.post("/updateBookmark", hotel).then((res) => {
-    if (err) {
-      new Noty({
-        type: "error",
-        timeout: 1000,
-        text: "Please Login",
-      }).show();
-    } else {
-      console.log("kenil");
-    }
-  });
+function updateBookMark(hotel, user, bookMarkHotel) {
+  const data = {
+    hotelId: hotel._id,
+    userId: user._id,
+    hotelName: hotel.name,
+  };
+  let status = {};
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  fetch("/updateBookmark", {
+    method: "Post",
+    body: JSON.stringify(data),
+    headers,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      status = {
+        ...data,
+      };
+      if (status.status === "deleted") {
+        bookMarkHotel.classList.replace("bookMark2", "bookMark1");
+        new Noty({
+          type: "success",
+          timeout: 1000,
+          text: `${hotel.name} BookMark is removed`,
+        }).show();
+      } else {
+        bookMarkHotel.classList.replace("bookMark1", "bookMark2");
+        new Noty({
+          type: "success",
+          timeout: 1000,
+          text: `${hotel.name} is BookMarked`,
+        }).show();
+      }
+    });
 }
 
-let hiddenInput = document.querySelector("#hiddenInput");
-let user = hiddenInput ? hiddenInput.value : null;
-user = JSON.parse(user);
-if (user) {
-  socket.emit("join", user._id.toString());
-}
-
-bookMarkHotel.addEventListener("click", async function (e) {
+bookMarkHotel.addEventListener("click", () => {
   const hotel = JSON.parse(bookMarkHotel.dataset.hotel);
-  const user = JSON.parse(bookMarkHotel.dataset.user);
-  await updateBookMark(hotel);
-  window.location.reload();
-  e.preventDefault();
+  console.log(bookMarkHotel.className);
+  let user = bookMarkHotel.dataset.user;
+  if (user === "Please Login") {
+    new Noty({
+      type: "error",
+      timeout: 1000,
+      text: "Please Login",
+    }).show();
+  } else {
+    const fullUser = JSON.parse(user);
+    updateBookMark(hotel, fullUser, bookMarkHotel);
+  }
 });
-function myFunction() {
-  socket.on("userId", () => {
-    console.log("kenil");
-  });
-}
-myFunction();
-// function removeBookmark(bookMarkedHotel) {
-//   axios.post("/deleteBookmark", bookMarkedHotel).then((res) => {
-//     window.location.reload();
-//   });
-// }
-
-// bookMarkDelete.addEventListener("click",async function (e) {
-//   const bookMarkedHotel = JSON.parse(bookMarkDelete.dataset.hotel);
-//   await removeBookmark(bookMarkedHotel);
-//   window.location.reload();
-// });
 
 function likeByUser(food) {
   axios.post("/likedFood", food).then((res) => {
@@ -108,22 +115,22 @@ likedFood.forEach((btn) => {
   });
 });
 
-profileClick.addEventListener("click", () => {
-  fullProfileNavigator.classList.toggle("profileNavigatorAnimator");
-});
-
 orderOnline.addEventListener("click", (e) => {
-  reviews.classList.remove("movingFullReviews");
-  fullOnlineOrder.classList.remove("movingFullOnlineOrder");
+  reviews.classList.remove("displayReviews");
+  fullOnlineOrder.classList.remove("displayFullOnlineOrder");
   reviewsCompartment.classList.remove("isActive");
   orderOnline.classList.add("isActive");
   e.preventDefault();
 });
 
 reviewsCompartment.addEventListener("click", (e) => {
-  reviews.classList.add("movingFullReviews");
-  fullOnlineOrder.classList.add("movingFullOnlineOrder");
+  reviews.classList.add("displayReviews");
+  fullOnlineOrder.classList.add("displayFullOnlineOrder");
   orderOnline.classList.remove("isActive");
   reviewsCompartment.classList.add("isActive");
   e.preventDefault();
+});
+
+profileClick.addEventListener("click", () => {
+  fullProfileNavigator.classList.toggle("profileNavigatorAnimator");
 });
